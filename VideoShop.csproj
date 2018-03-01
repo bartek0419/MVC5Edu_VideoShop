@@ -206,6 +206,10 @@
     <Compile Include="Migrations\201803011137318_InitialModel.Designer.cs">
       <DependentUpon>201803011137318_InitialModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803011140593_CreateMoviesTable.cs" />
+    <Compile Include="Migrations\201803011140593_CreateMoviesTable.Designer.cs">
+      <DependentUpon>201803011140593_CreateMoviesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -289,6 +293,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201803011137318_InitialModel.resx">
       <DependentUpon>201803011137318_InitialModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803011140593_CreateMoviesTable.resx">
+      <DependentUpon>201803011140593_CreateMoviesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
