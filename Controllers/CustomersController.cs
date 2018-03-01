@@ -1,34 +1,31 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
+using VideoShop.Models;
 
 namespace VideoShop.Controllers
 {
     public class CustomersController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public CustomersController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: Customers
+
         public ActionResult Index()
         {
-            var customers = GetCustomers();
+            var customers = _context.Customers.ToList();
 
             return View(customers);
         }
 
-        private static List<Customer> GetCustomers()
+        protected override void Dispose(bool disposing)
         {
-            return new List<Customer>
-            {
-                new Customer {Id = 1, Name = "Nowak"},
-                new Customer {Id = 2, Name = "Kowalsky"}
-            };
+            base.Dispose(disposing);
+            _context.Dispose();
         }
-    }
-
-    public class Customer
-    {
-        public int Id { get; set; }
-        public string Name { get; set; }
     }
 }
