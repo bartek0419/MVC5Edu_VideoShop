@@ -11,17 +11,12 @@ namespace VideoShop.Controllers
         // GET: Movies
         public ActionResult Index()
         {
-            var movies = GetMovies();
-            return View(movies);
-        }
-
-        private static List<Movie> GetMovies()
-        {
-            return new List<Movie>
+            var movies = new List<Movie>
             {
                 new Movie {Name = "Shrek", Id = 1},
                 new Movie {Name = "Star War", Id = 2}
             };
+            return View();
         }
     }
 
