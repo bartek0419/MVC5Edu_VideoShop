@@ -3,26 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VideoShop.Models;
 
 namespace VideoShop.Controllers
 {
     public class MoviesController : Controller
     {
+        private readonly ApplicationDbContext _context;
+
+        public MoviesController()
+        {
+            _context = new ApplicationDbContext();
+        }
+
         // GET: Movies
+
         public ActionResult Index()
         {
-            var movies = new List<Movie>
-            {
-                new Movie {Name = "Shrek", Id = 1},
-                new Movie {Name = "Star War", Id = 2}
-            };
-            return View();
+            var movies = _context.Movies.ToList();
+            return View(movies);
         }
-    }
 
-    public class Movie
-    {
-        public string Name { get; set; }
-        public int Id { get; set; }
+        protected override void Dispose(bool disposing)
+        {
+            base.Dispose(disposing);
+            _context.Dispose();
+        }
     }
 }
