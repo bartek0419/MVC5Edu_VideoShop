@@ -1,0 +1,28 @@
+﻿@model List<VideoShop.Controllers.Movie>
+
+@{
+    ViewBag.Title = "Movies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movies</h2>
+@if(!Model.Any())
+{ 
+    <p>There is no movies in database</p>
+}
+else
+{
+    <table>
+        <thead>
+            <td>Name</td>
+        </thead>
+    <tbody>
+    @foreach (var movie in Model)
+    {
+        <tr>
+            <td>@movie.Name</td>
+        </tr>
+    }
+        </tbody>
+    </table>
+}
