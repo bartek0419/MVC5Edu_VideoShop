@@ -20,7 +20,7 @@ else
             @foreach (var customer in Model)
             {
                 <tr>
-                    <td>@customer.Name</td>
+                    <td>@Html.ActionLink(customer.Name, "Details", new {Id = customer.Id})</td>
                 </tr>
             }        
         </tbody>

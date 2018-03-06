@@ -29,5 +29,11 @@ namespace VideoShop.Controllers
             base.Dispose(disposing);
             _context.Dispose();
         }
+
+        public ActionResult Details(int id)
+        {
+            var movie = _context.Movies.ToList().Single(m => m.Id == id);
+            return View(movie);
+        }
     }
 }

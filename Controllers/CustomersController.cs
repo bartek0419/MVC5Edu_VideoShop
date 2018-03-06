@@ -27,5 +27,11 @@ namespace VideoShop.Controllers
             base.Dispose(disposing);
             _context.Dispose();
         }
+
+        public ActionResult Details(int id)
+        {
+            var customer = _context.Customers.ToList().Single(c => c.Id == id);
+            return View(customer);
+        }
     }
 }
