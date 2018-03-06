@@ -235,6 +235,10 @@
     <Compile Include="Migrations\201803061515292_AddNameColumnToMembershipTypesTable.Designer.cs">
       <DependentUpon>201803061515292_AddNameColumnToMembershipTypesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803061517424_PopulateNameColumnForMembershipTypesTable.cs" />
+    <Compile Include="Migrations\201803061517424_PopulateNameColumnForMembershipTypesTable.Designer.cs">
+      <DependentUpon>201803061517424_PopulateNameColumnForMembershipTypesTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -344,6 +348,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803061515292_AddNameColumnToMembershipTypesTable.resx">
       <DependentUpon>201803061515292_AddNameColumnToMembershipTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803061517424_PopulateNameColumnForMembershipTypesTable.resx">
+      <DependentUpon>201803061517424_PopulateNameColumnForMembershipTypesTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
