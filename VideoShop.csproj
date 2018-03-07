@@ -239,6 +239,10 @@
     <Compile Include="Migrations\201803061517424_PopulateNameColumnForMembershipTypesTable.Designer.cs">
       <DependentUpon>201803061517424_PopulateNameColumnForMembershipTypesTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201803071029185_CreateBithdateColumnInCustomerstable.cs" />
+    <Compile Include="Migrations\201803071029185_CreateBithdateColumnInCustomerstable.Designer.cs">
+      <DependentUpon>201803071029185_CreateBithdateColumnInCustomerstable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -351,6 +355,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201803061517424_PopulateNameColumnForMembershipTypesTable.resx">
       <DependentUpon>201803061517424_PopulateNameColumnForMembershipTypesTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201803071029185_CreateBithdateColumnInCustomerstable.resx">
+      <DependentUpon>201803071029185_CreateBithdateColumnInCustomerstable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

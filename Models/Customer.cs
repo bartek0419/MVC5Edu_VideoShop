@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace VideoShop.Models
@@ -13,5 +14,6 @@ namespace VideoShop.Models
         [ForeignKey("MembershipTypeId")]
         public MembershipType MembershipType { get; set; }
         public byte? MembershipTypeId { get; set; }
+        public DateTime? Birthdate { get; set; }
     }
 }
