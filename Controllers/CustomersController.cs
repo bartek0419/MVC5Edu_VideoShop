@@ -34,5 +34,15 @@ namespace VideoShop.Controllers
             var customer = _context.Customers.Include(c => c.MembershipType).ToList().Single(c => c.Id == id);
             return View(customer);
         }
+
+        public ActionResult New()
+        {
+            return View();
+        }
+
+        public ActionResult Create()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }
