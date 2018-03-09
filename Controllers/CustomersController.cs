@@ -1,7 +1,9 @@
-﻿using System.Data.Entity;
+﻿using System.Collections;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 using VideoShop.Models;
+using VideoShop.ViewModels;
 
 namespace VideoShop.Controllers
 {
@@ -37,7 +39,13 @@ namespace VideoShop.Controllers
 
         public ActionResult New()
         {
-            return View();
+            var membershipTypes = _context.MembershipTypes.ToList();
+            var customerViewModel = new CustomerViewModel
+            {
+                MembershipTypes = membershipTypes,
+                Customer =new Customer()
+            };
+            return View(customerViewModel);
         }
 
         public ActionResult Create()
