@@ -35,5 +35,18 @@ namespace VideoShop.Controllers
             var movie = _context.Movies.ToList().Single(m => m.Id == id);
             return View(movie);
         }
+
+        public ActionResult NewMovie()
+        {
+            return View(new Movie());
+        }
+
+        [HttpPost]
+        public ActionResult Save(Movie movie)
+        {
+            _context.Movies.Add(movie);
+            _context.SaveChanges();
+            return RedirectToAction("Index");
+        }
     }
 }
