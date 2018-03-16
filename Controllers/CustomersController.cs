@@ -40,17 +40,45 @@ namespace VideoShop.Controllers
         public ActionResult New()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            var customerViewModel = new CustomerViewModel
+            var customerViewModel = new CustomerFormViewModel
             {
                 MembershipTypes = membershipTypes,
                 Customer =new Customer()
             };
-            return View(customerViewModel);
+            return View("CustomerForm", customerViewModel);
         }
 
-        public ActionResult Create()
+        [HttpPost]
+        public ActionResult Save(Customer customer)
         {
-            throw new System.NotImplementedException();
+            if (customer.Id == 0)
+            {
+                _context.Customers.Add(customer);
+            }
+            else
+            {
+                var customerInDb = _context.Customers.Single(c => c.Id == customer.Id);
+                customerInDb.Name = customer.Name;
+                customerInDb.Birthdate = customer.Birthdate;
+                customerInDb.MembershipTypeId = customer.MembershipTypeId;
+                customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
+            }
+            _context.SaveChanges();
+            return RedirectToAction("Details", new {Id=customer.Id});
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var customer = _context.Customers.SingleOrDefault(c => c.Id == id);
+
+            if (customer == null) return HttpNotFound();
+
+            var customerViewModel = new CustomerFormViewModel()
+            {
+                Customer = customer,
+                MembershipTypes = _context.MembershipTypes.ToList()
+            };
+            return View("CustomerForm", customerViewModel);
         }
     }
 }
