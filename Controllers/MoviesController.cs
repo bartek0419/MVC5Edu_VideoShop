@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using VideoShop.Dtos;
 using VideoShop.Models;
 
 namespace VideoShop.Controllers
@@ -38,15 +39,43 @@ namespace VideoShop.Controllers
 
         public ActionResult NewMovie()
         {
-            return View(new Movie());
+            var movieFormDto = new MovieFormDto
+            {
+                Title = "New Movie",
+                Movie = new Movie()
+            };
+            return View("MovieForm",movieFormDto);
         }
 
         [HttpPost]
         public ActionResult Save(Movie movie)
         {
-            _context.Movies.Add(movie);
+            if (movie.Id == 0)
+            {
+                _context.Movies.Add(movie);
+            }
+            else
+            {
+                var movieInDb = _context.Movies.Single(m => m.Id == movie.Id);
+                movieInDb.Name = movie.Name;
+                movieInDb.DateAdded = movie.DateAdded;
+                movieInDb.Genre= movie.Genre;
+                movieInDb.ReleaseDate = movie.ReleaseDate;
+                movieInDb.StockNumber= movie.StockNumber;
+            }
             _context.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int id)
+        {
+            var moviesInDb = _context.Movies.Single(m => m.Id == id);
+            var movieFormDto = new MovieFormDto()
+            {
+                Title = "Edit Movie",
+                Movie = moviesInDb
+            };
+            return View("MovieForm", movieFormDto);
         }
     }
 }
