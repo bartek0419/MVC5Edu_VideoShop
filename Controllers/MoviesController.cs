@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -63,7 +64,16 @@ namespace VideoShop.Controllers
                 movieInDb.ReleaseDate = movie.ReleaseDate;
                 movieInDb.StockNumber= movie.StockNumber;
             }
-            _context.SaveChanges();
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (DbEntityValidationException e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
             return RedirectToAction("Index");
         }
 
